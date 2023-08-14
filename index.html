@@ -1,0 +1,270 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game With Js</title>
+
+    
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            background: url('merdeka-kemerdekaan.gif');
+            background-position:absolute;
+            background-size: cover;
+            animation: Bg 10s ease-in-out infinite;
+        }
+        .container {
+            width: 440px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 3px 3px 5px rgb(0 0 0 / 0.2);
+            padding: 16px 25px;
+            z-index: 1;
+        }
+        .container h2 {
+            font-size: 25px;
+            font-weight: 500;
+            border-bottom: 1px solid #ccc;
+        }
+        .container .content {
+            margin: 30px 20px 35px;
+        }
+        .content .word {
+            font-size: 25px;
+            font-weight: 500px;
+            user-select: none;
+            text-align: center;
+            letter-spacing: 15px;
+            margin-right: -24px;
+            word-break: break-all;
+            text-transform: uppercase;
+            margin-top: -10px;
+        }
+        .content .details {
+            margin: 20px 0px 25px;
+        }
+        .content p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .details p b {
+            font-weight: 500;
+        }
+        .content input {
+            width: 100%;
+            height: 40px;
+            outline: none;
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid #bfbfbf;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .content input:focus {
+            transform: scale(1.02);
+            transition: 0.3s;
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.08)
+        }
+        .content input::placeholder {
+            color: #aaa;
+        }
+        .content input:focus::placeholder {
+            color: #bfbfbf;
+        }
+        .content .button {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .button button {
+            border: none;
+            outline: none;
+            padding-inline: 20px;
+            padding-block: 10px;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .button .refresh-word {
+            background: #6C757D;
+        }
+        .button .refresh-word:hover {
+            background: #5f666d;
+        }        
+        .button button:active {
+            transform: scale(0.97);
+        }
+        .button .check-word {
+            background: #FF6969;
+        }
+        .button .check-word:hover {
+            background: #f55151;
+        }
+        @media screen and ( max-width: 470px ){
+            .container {
+              padding: 5px;
+              width: 350px;
+            }
+            .container h2 {
+                font-size: 22px;
+                padding: 13px 20px;
+            }
+            .container .word {
+                font-size: 30px;
+                letter-spacing: 20px;
+                margin-right: -20px;
+                margin-top: -30px;
+            }
+            .container .content {
+                padding-top: 10px;
+            }
+            .details p {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+            .content input {
+                height: 35px;
+                font-size: 17px;
+            }
+            .container-A {
+              width: 350px;
+            }
+        }
+        @media screen and ( max-width: 320px ) {
+          .container {
+            padding: 5px;
+          }
+          .container h2 {
+            font-size: 20px;
+            padding: 10px 18px;
+          }
+          .containe .word {
+            font-size: 28px;
+            letter-spacing: 18px;
+            margin-right: -18px;
+            margin-top: -28px;
+          }
+          .container .content {
+            padding: 18px 18px 8px;
+          }
+          .details p {
+            font-size: 14px;
+            margin-bottom: 6px;
+          }
+        }
+          .dropdown {
+            position: absolute;
+            margin-bottom: 450px;
+            opacity: 0;
+        }
+        .tombol {
+            padding: 4px;
+            background: white;
+            box-shadow: 5px 5px 10px rgb(0 0 0 / 0.2);
+            border-radius: 5px;
+            padding-inline: 10px;
+            position: absolute;
+            margin-bottom: 600px;
+            border: none;
+        }
+        .tombol:active {
+            transform: scale(0.97);
+        }
+        .menu button {
+            padding-inline: 100px;
+            border: none;
+            box-shadow: 5px 5px 10px rgb(0 0 0 / 0.2);
+            border-radius: 5px;
+            margin-top: 5px;
+            height: 30px;
+            outline: none;
+        }
+        .menu button:active {
+            transform: scale(0.97);
+        }
+        @keyframes Masuk {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes Keluar {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes Bg {
+          0% {
+            background-position-x: 0px;
+          } 50% {
+            background-position-x: 100%;
+          } 100% {
+            background-position-x: 0px;
+          }
+        }
+        .container-A {
+            justify-content: center;
+            align-items: center;
+            display: block;
+            position: absolute;
+            opacity: 0;
+            color: white;
+            z-index: 0;
+            background-color: rgba(0,0,0,0.5);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter:blur(5px);
+            box-shadow: 3px 3px 5px rgb(0 0 0 / 0.2);
+        }
+    </style>
+
+</head>
+<body>
+    <button onclick="drop()" class="tombol">Menu</button>
+    <div class="dropdown">
+        <div class="menu">
+            <button onclick="game()">Game</button><br>
+            <button onclick="About()">About</button>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Word Scramble</h2>
+        <div class="content">
+            <p id="1" class="word"></p>
+            <div class="details">
+                <p class="hint">Hint : <span></span></p>
+                <p class="time">Time Left : <span><b>30</b>s</span></p>
+            </div>
+            <input type="text" spellcheck="false" placeholder="Enter a valid text">
+            <div class="button">
+                <button class="refresh-word">Resfres</button>
+                <button class="check-word">Check</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-A">
+        <h1 style="text-align: center; margin-bottom: 50px;">About</h1>
+        <p>Pembuat : Yahya Alifandi</p>
+        <p>Umur : 15</p>
+        <p>Create With : Html,Css,JavaScript</p>
+        <p>Software : Visual Studio Code</p>
+        <br>
+        <p>Jika Anda sering menemukan kegagalan ingatlah :</p>
+        <p>"Suatu <span style="color: red; font-weight: bold;">kegagalan</span> adalah batu pijakan untuk <span style="color: lime; font-weight: bold;">Kesuksesan</span>."</p>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
