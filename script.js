@@ -134,6 +134,7 @@ function game() {
     document.querySelector(".container-A").style.opacity = "0";
     document.querySelector(".container-A").style.display = "none";
     initTimer(30);
+    initGame();
 }
 function About() {
     document.querySelector(".container").style.animation = "Keluar 1s ease";
